@@ -150,7 +150,7 @@ function HomeTBEScreen({ ctx }) {
 // ─── JourneyTBEScreen ─────────────────────────────────────────────────────────
 function JourneyTBEScreen({ ctx }) {
   const [activeTab, setActiveTab] = React.useState('Saúde');
-  const [oyaVisible] = React.useState(false); // false = masculino por padrão
+  const [oyaVisible] = React.useState(localStorage.getItem('cj_gender') === 'Feminino');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: CP.white }}>
       {/* Fixed header */}
