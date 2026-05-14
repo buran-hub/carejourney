@@ -54,19 +54,20 @@ function OnboardingProgress({ current, total = 5, dark }) {
 // ─── Score header card (used in Journey fixed header) ─────────────────────────
 function JourneyScoreCard() {
   return (
-    <div style={{ margin: '0 16px', backgroundColor: CJ.cardBg, borderRadius: 10, height: 36, display: 'flex', alignItems: 'center' }}>
-      {/* Col 1 */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: `1px solid ${CJ.border}`, padding: '0 8px' }}>
-        <span style={{ fontSize: 11, fontWeight: 700, color: CJ.textPrimary, lineHeight: 1 }}>⚡ Active · 5.742 pts</span>
-        <span style={{ fontSize: 9, color: CJ.textTertiary, marginTop: 1 }}>Nível 3</span>
+    <div style={{ margin: '0 16px', backgroundColor: CJ.cardBg, borderRadius: 10, height: 48, display: 'flex', alignItems: 'center' }}>
+      {/* Col 1 — nível + pts */}
+      <div style={{ flex: 1.4, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: `1px solid ${CJ.border}`, padding: '0 10px', gap: 3 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, color: CJ.textPrimary, lineHeight: 1, whiteSpace: 'nowrap' }}>⚡ Active · 5.742 pts</span>
+        <span style={{ fontSize: 9, color: CJ.textTertiary }}>Nível 3</span>
       </div>
-      {/* Col 2 */}
+      {/* Col 2 — streak */}
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRight: `1px solid ${CJ.border}` }}>
         <span style={{ fontSize: 11, fontWeight: 700, color: CJ.textPrimary }}>🔥 12 dias</span>
       </div>
-      {/* Col 3 */}
+      {/* Col 3 — coins */}
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span style={{ fontSize: 11, fontWeight: 700, color: CJ.textPrimary }}>🪙 3.240</span>
+        <span style={{ fontSize: 13 }}>🪙</span>
+        <span style={{ fontSize: 11, fontWeight: 700, color: CJ.textPrimary, marginLeft: 4 }}>3.240</span>
       </div>
     </div>
   );
