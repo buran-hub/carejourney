@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Care Plus — TO-BE · Care Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #0d1846; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    @media (max-width: 500px) {
+      body { background: #fff; display: block; }
+      #root { width: 100%; height: 100dvh; max-width: 430px; margin: 0 auto; overflow: hidden; }
+    }
+    @keyframes spin  { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%,100%{opacity:.3;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }
+    button, input, select { font-family: 'Montserrat', sans-serif; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+    *::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Starter frame -->
+  <script type="text/babel" src="ios-frame.jsx"></script>
+
+  <!-- AS-IS shared components (reused in full) -->
+  <script type="text/babel" src="care-plus-shared.jsx"></script>
+  <script type="text/babel" src="care-plus-home.jsx"></script>
+  <script type="text/babel" src="care-plus-blua.jsx"></script>
+  <script type="text/babel" src="care-plus-exames.jsx"></script>
+  <script type="text/babel" src="care-plus-journeys.jsx"></script>
+
+  <!-- TO-BE additions -->
+  <script type="text/babel" src="care-journey-shared.jsx"></script>
+  <script type="text/babel" src="care-journey-onboarding.jsx"></script>
+  <script type="text/babel" src="care-journey-saude.jsx"></script>
+  <script type="text/babel" src="care-journey-coins-historico.jsx"></script>
+  <script type="text/babel" src="care-journey-home-journey.jsx"></script>
+
+  <!-- Router + mount -->
+  <script type="text/babel">
+    function CarePlusTOBEApp() {
+      // Coins state accumulated during onboarding
+      const [coins, setCoins] = React.useState(0);
+      const addCoins = (n) => setCoins(c => c + n);
+
+      // Navigation stack
+      // Always reset so onboarding shows on every page load
+      React.useEffect(() => {
+        localStorage.removeItem('cj_onboarding_done');
+        localStorage.removeItem('cj_gender');
+      }, []);
+      const onboardingDone = false;
+      const [stack, setStack] = React.useState([onboardingDone ? 'home' : 'onboarding-1']);
+      const current = stack[stack.length - 1];
+
+      const navigate    = (id) => setStack(prev => [...prev, id]);
+      const navigateTab = (id) => setStack([id]);
+      const goBack      = ()   => setStack(prev => prev.length > 1 ? prev.slice(0, -1) : prev);
+
+      const ctx = { navigate, navigateTab, goBack, current, coins, addCoins };
+
+      const SCREENS = {
+        // Onboarding
+        'onboarding-1': OnboardingWelcome,
+        'onboarding-2': OnboardingDados,
+        'onboarding-2b': OnboardingObjetivos,
+        'onboarding-3': OnboardingHabitos,
+        'onboarding-4': OnboardingUltimosDetalhes,
+        'onboarding-5': OnboardingDependentes,
+        'onboarding-6': OnboardingLGPD,
+        'onboarding-7': OnboardingCelebracao,
+        // Home (TO-BE version)
+        'home':           HomeTBEScreen,
+        // Journey (TO-BE full tab)
+        'journey':        JourneyTBEScreen,
+        // Shared menu / secondary
+        'menu':           MenuScreen,
+        'carteirinha':    CarteirinhaScreen,
+        // Rede, reembolso, autorizações (AS-IS)
+        'rede':           RedeScreen,
+        'reembolso':      ReembolsoScreen,
+        'autorizacoes':   AutorizacoesScreen,
+        // Blua hub
+        'blua':           BluaScreen,
+        // J1 Caren
+        'caren-1': CarenScreen1, 'caren-2': CarenScreen2, 'caren-3': CarenScreen3,
+        'caren-4': CarenScreen4, 'caren-5': CarenScreen5,
+        // J2 Anura
+        'anura-1': AnuraScreen1, 'anura-2': AnuraScreen2, 'anura-3': AnuraScreen3,
+        'anura-4': AnuraScreen4, 'anura-5': AnuraScreen5, 'anura-6': AnuraScreen6,
+        'anura-7': AnuraScreen7, 'anura-8': AnuraScreen8,
+        // J3 Teleconsulta
+        'teleconsulta-1': TeleconsultaScreen1, 'teleconsulta-2': TeleconsultaScreen2,
+        // J4 Exames
+        'exames-1': ExamesScreen1, 'exames-2': ExamesScreen2, 'exames-3': ExamesScreen3,
+        'exames-4': ExamesScreen4, 'exames-5': ExamesScreen5, 'exames-6': ExamesScreen6,
+        'exames-7': ExamesScreen7, 'exames-8': ExamesScreen8, 'exames-9': ExamesScreen9,
+        // J5 Vacinas
+        'vacinas-1': VacinasScreen1, 'vacinas-2': VacinasScreen2, 'vacinas-3': VacinasScreen3,
+        'vacinas-4': VacinasScreen4, 'vacinas-5': VacinasScreen5, 'vacinas-6': VacinasScreen6,
+        'vacinas-7': VacinasScreen7,
+        // J6 Consulta
+        'consulta-1': ConsultaScreen1, 'consulta-2': ConsultaScreen2, 'consulta-3': ConsultaScreen3,
+        'consulta-4': ConsultaScreen4, 'consulta-5': ConsultaScreen5,
+        // J7–J10
+        'personal-1':  PersonalScreen1,
+        'mental-1':    MentalScreen1, 'mental-2': MentalScreen2, 'mental-3': MentalScreen3,
+        'movimente-1': MovimenteScreen1, 'movimente-2': MovimenteScreen2,
+        'movimente-3': MovimenteScreen3, 'movimente-4': MovimenteScreen4,
+        'empresa-1':   EmpresaScreen1, 'empresa-2': EmpresaScreen2, 'empresa-3': EmpresaScreen3,
+        'empresa-4':   EmpresaScreen4, 'empresa-5': EmpresaScreen5, 'empresa-6': EmpresaScreen6,
+        'empresa-7':   EmpresaScreen7,
+      };
+
+      const ScreenComponent = SCREENS[current] || HomeTBEScreen;
+      const mobile = window.__cpMobile;
+
+      return (
+        <div style={{ height: '100%', fontFamily: "'Montserrat', sans-serif", position: 'relative', overflow: 'hidden', paddingTop: mobile ? 0 : 62, paddingBottom: mobile ? 0 : 34, boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+          <ScreenComponent key={current} ctx={ctx} />
+        </div>
+      );
+    }
+
+    function Root() {
+      const mobile = window.innerWidth <= 500;
+      window.__cpMobile = mobile;
+      if (mobile) {
+        return (
+          <div style={{ width: '100%', height: '100dvh', overflow: 'hidden', fontFamily: "'Montserrat', sans-serif", display: 'flex', flexDirection: 'column', backgroundColor: '#fff' }}>
+            <CarePlusTOBEApp />
+          </div>
+        );
+      }
+      return (
+        <IOSDevice width={390} height={844} dark={false}>
+          <CarePlusTOBEApp />
+        </IOSDevice>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Root />);
+  </script>
+</body>
+</html>
