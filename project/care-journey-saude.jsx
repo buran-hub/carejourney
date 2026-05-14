@@ -152,14 +152,14 @@ function AlertasDependentesCard() {
 // ─── Badges ───────────────────────────────────────────────────────────────────
 function BadgesCard() {
   const badges = [
-  { emoji: '🦶', name: 'Primeiro Passo', state: 'done', cond: null, progress: null },
-  { emoji: '🔥', name: 'Semana em Chamas', state: 'done', cond: '7 dias de streak', progress: null },
-  { emoji: '🏃', name: '10K Club', state: 'done', cond: null, progress: null },
-  { emoji: '🩺', name: 'Bem Checado', state: 'progress', cond: '2 de 3 exames', progress: 66 },
-  { emoji: '💪', name: 'Mês Invicto', state: 'progress', cond: '12 de 30 dias', progress: 40 },
-  { emoji: '🧠', name: 'Mente Leve', state: 'locked', cond: 'Aderir ao Mental Health', progress: null },
-  { emoji: '🌱', name: 'Guardião do Planeta', state: 'locked', cond: 'Primeira doação ESG', progress: null },
-  { emoji: '👨‍👩‍👧', name: 'Família Saudável', state: 'done', cond: null, progress: null }];
+  { emoji: '🦶', name: 'Primeiro Passo',      state: 'done',     cond: null,                       progress: null },
+  { emoji: '🔥', name: 'Semana em Chamas',    state: 'done',     cond: '7 dias de streak',          progress: null },
+  { emoji: '🏃', name: '10K Club',            state: 'done',     cond: null,                       progress: null },
+  { emoji: '👨‍👩‍👧', name: 'Família Saudável',  state: 'done',     cond: null,                       progress: null },
+  { emoji: '🩺', name: 'Bem Checado',         state: 'progress', cond: '2 de 3 exames',            progress: 66 },
+  { emoji: '💪', name: 'Mês Invicto',         state: 'progress', cond: '12 de 30 dias',            progress: 40 },
+  { emoji: '🌱', name: 'Guardião do Planeta', state: 'locked',   cond: 'Primeira doação ESG',      progress: null },
+  { emoji: '🧠', name: 'Mente Leve',          state: 'locked',   cond: 'Aderir ao Mental Health',  progress: null }];
 
   return (
     <div style={{ backgroundColor: CJ.white, borderRadius: 12, border: `1px solid ${CJ.border}`, padding: 14, marginBottom: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
