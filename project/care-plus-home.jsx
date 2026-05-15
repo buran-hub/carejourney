@@ -150,38 +150,32 @@ function HomeScreen({ ctx }) {
               url: 'https://www.careplus.com.br/careplus-mais/pneumonia-como-a-vacina-ajuda-a-reduzir-internacoes-e-afastamentos',
               title: 'Pneumonia: como a vacina ajuda a reduzir internações e afastamentos',
               desc: 'Entenda os riscos da pneumonia e como as vacinas pneumocócicas protegem você.',
-              imgLabel: 'foto — vacinação no braço',
+              imgSrc: 'uploads/banner-vacina-pneumonia.jpg',
               imgBg: '#c8d8c0'
             },
             {
               url: 'https://www.careplus.com.br/careplus-mais/tratamentos-odontologicos-esteticos-exigem-cuidados',
               title: 'Tratamentos odontológicos estéticos exigem cuidados',
               desc: 'Saiba como manter resultados bonitos e seguros por mais tempo.',
-              imgLabel: 'foto — tratamento odontológico',
+              imgSrc: 'uploads/banner-odontologia.jpg',
               imgBg: '#d8c8c8'
             },
             {
               url: 'https://www.careplus.com.br/careplus-mais/ecossistema-integrado-de-saude-e-tendencia-no-cuidado-preventivo',
               title: 'Ecossistema integrado de saúde é tendência no cuidado preventivo',
               desc: 'Entenda como o ecossistema integrado de saúde melhora o cuidado.',
-              imgLabel: 'foto — tecnologia médica digital',
+              imgSrc: 'uploads/banner-ecossistema-saude.jpg',
               imgBg: '#c0ccd8'
             }].
             map((article, i) =>
             <a key={i} href={article.url} target="_blank" rel="noopener noreferrer"
             style={{ minWidth: 180, maxWidth: 180, flexShrink: 0, borderRadius: 14, overflow: 'hidden', border: `1px solid ${CP.border}`, backgroundColor: CP.white, boxShadow: '0 2px 8px rgba(0,0,0,0.07)', textDecoration: 'none', scrollSnapAlign: 'start', display: 'flex', flexDirection: 'column' }}>
-                {/* Image placeholder */}
-                <div style={{ height: 110, backgroundColor: article.imgBg, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                  <svg width="100%" height="110" viewBox="0 0 180 110" preserveAspectRatio="xMidYMid slice">
-                    <rect width="180" height="110" fill={article.imgBg} />
-                    {/* Subtle stripe pattern */}
-                    {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((j) =>
-                  <line key={j} x1={j * 25 - 10} y1="0" x2={j * 25 + 60} y2="110" stroke="rgba(255,255,255,0.12)" strokeWidth="18" />
-                  )}
-                  </svg>
-                  <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 4 }}>
-                    <span style={{ fontSize: 9, color: 'rgba(0,0,0,0.35)', fontFamily: 'monospace', textAlign: 'center', padding: '2px 8px', backgroundColor: 'rgba(255,255,255,0.4)', borderRadius: 4 }}>{article.imgLabel}</span>
-                  </div>
+                {/* Article banner image */}
+                <div style={{ height: 110, backgroundColor: article.imgBg, position: 'relative', overflow: 'hidden' }}>
+                  <img src={article.imgSrc} alt={article.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
                 </div>
                 {/* Text */}
                 <div style={{ padding: '10px 12px 14px' }}>
