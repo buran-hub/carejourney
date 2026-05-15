@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Journey — Protótipos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100vh;
+      background: #0d1846;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    .container {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+    .logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 48px;
+      line-height: 1.5;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 480px) {
+      .cards { grid-template-columns: 1fr; }
+      h1 { font-size: 26px; }
+    }
+    .card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.18s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .card:hover {
+      background: rgba(255,255,255,0.13);
+      transform: translateY(-3px);
+    }
+    .card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .tag-asis { background: rgba(0,121,200,0.25); color: #5bc0f8; }
+    .tag-tobe { background: rgba(0,200,120,0.2); color: #4de8a8; }
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      text-align: left;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      text-align: left;
+    }
+    .card-arrow {
+      margin-top: 6px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer {
+      margin-top: 48px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* Banners section */
+    .banners-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin: 48px 0 16px;
+    }
+    .banners {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .banners { grid-template-columns: 1fr; }
+    }
+    .banner-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 12px;
+      opacity: 0.75;
+      transition: opacity 0.18s;
+    }
+    .banner-img:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">Care Plus</div>
+    <h1>Care Journey</h1>
+    <p class="subtitle">Protótipos interativos do aplicativo.<br/>Selecione a versão que deseja visualizar.</p>
+
+    <div class="cards">
+      <a href="care-plus.html" class="card">
+        <span class="card-tag tag-asis">AS-IS</span>
+        <span class="card-title">App Atual</span>
+        <span class="card-desc">Versão atual do aplicativo Care Plus com todas as funcionalidades existentes.</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a href="care-journey.html" class="card">
+        <span class="card-tag tag-tobe">TO-BE</span>
+        <span class="card-title">Care Journey</span>
+        <span class="card-desc">Nova experiência com onboarding, jornadas de saúde e gamificação com Care Coins.</span>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="banners-title">Banners Care Plus +</div>
+    <div class="banners">
+      <img src="uploads/banner-vacina-pneumonia.jpg" alt="Vacina Pneumonia" class="banner-img" />
+      <img src="uploads/banner-odontologia.jpg" alt="Odontologia" class="banner-img" />
+      <img src="uploads/banner-ecossistema-saude.jpg" alt="Ecossistema de Saúde" class="banner-img" />
+    </div>
+
+    <div class="footer">Care Plus · Protótipo interativo · 2026</div>
+  </div>
+</body>
+</html>

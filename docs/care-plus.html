@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Care Plus — Protótipo AS-IS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #0d1846; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    /* On real mobile — fill viewport, no frame */
+    @media (max-width: 500px) {
+      body { background: #fff; display: block; }
+      #root { width: 100%; height: 100dvh; max-width: 430px; margin: 0 auto; overflow: hidden; }
+    }
+    @keyframes spin  { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%,100%{opacity:.3;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }
+    button { font-family: 'Montserrat', sans-serif; }
+    input, select { font-family: 'Montserrat', sans-serif; }
+    /* Hide all scrollbars — mobile prototype, scroll via touch/drag */
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+    *::-webkit-scrollbar { display: none; }
+
+    /* Watermark label */
+    .prototype-label {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(13,24,70,0.75); color: rgba(255,255,255,0.7);
+      font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px;
+      letter-spacing: 0.5px; backdrop-filter: blur(6px); pointer-events: none;
+      font-family: 'Montserrat', sans-serif; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Starter components -->
+  <script type="text/babel" src="ios-frame.jsx"></script>
+
+  <!-- App component files (order matters — shared must be first) -->
+  <script type="text/babel" src="care-plus-shared.jsx"></script>
+  <script type="text/babel" src="care-plus-home.jsx"></script>
+  <script type="text/babel" src="care-plus-blua.jsx"></script>
+  <script type="text/babel" src="care-plus-exames.jsx"></script>
+  <script type="text/babel" src="care-plus-journeys.jsx"></script>
+  <script type="text/babel" src="care-plus-app.jsx"></script>
+
+  <!-- Mount -->
+  <script type="text/babel">
+    function Root() {
+      const mobile = window.innerWidth <= 500;
+      window.__cpMobile = mobile;
+      if (mobile) {
+        return (
+          <div style={{ width: '100%', height: '100dvh', overflow: 'hidden', fontFamily: "'Montserrat', sans-serif", display: 'flex', flexDirection: 'column', backgroundColor: '#fff' }}>
+            <CarePlusApp />
+          </div>
+        );
+      }
+      return (
+        <IOSDevice width={390} height={844} dark={false}>
+          <CarePlusApp />
+        </IOSDevice>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Root />);
+  </script>
+</body>
+</html>
