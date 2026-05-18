@@ -124,13 +124,13 @@ function HomeTBEScreen({ ctx }) {
           </div>
           <div style={{ display: 'flex', gap: 12, overflowX: 'auto', scrollSnapType: 'x mandatory', margin: "16px" }}>
             <div style={{ minWidth: 16, flexShrink: 0 }} />
-            {[{ url: 'https://www.careplus.com.br/careplus-mais/pneumonia-como-a-vacina-ajuda-a-reduzir-internacoes-e-afastamentos', title: 'Pneumonia: como a vacina ajuda a reduzir internações', desc: 'Entenda como as vacinas pneumocócicas protegem você.', imgBg: '#c8d8c0' },
-            { url: 'https://www.careplus.com.br/careplus-mais/tratamentos-odontologicos-esteticos-exigem-cuidados', title: 'Tratamentos odontológicos estéticos exigem cuidados', desc: 'Saiba como manter resultados seguros por mais tempo.', imgBg: '#d8c8c8' },
-            { url: 'https://www.careplus.com.br/careplus-mais/ecossistema-integrado-de-saude-e-tendencia-no-cuidado-preventivo', title: 'Ecossistema integrado de saúde é tendência preventiva', desc: 'Como o ecossistema integrado melhora o cuidado.', imgBg: '#c0ccd8' }].
+            {[{ url: 'https://www.careplus.com.br/careplus-mais/pneumonia-como-a-vacina-ajuda-a-reduzir-internacoes-e-afastamentos', title: 'Pneumonia: como a vacina ajuda a reduzir internações', desc: 'Entenda como as vacinas pneumocócicas protegem você.', imgSrc: 'uploads/banner-vacina-pneumonia.jpg', imgBg: '#c8d8c0' },
+            { url: 'https://www.careplus.com.br/careplus-mais/tratamentos-odontologicos-esteticos-exigem-cuidados', title: 'Tratamentos odontológicos estéticos exigem cuidados', desc: 'Saiba como manter resultados seguros por mais tempo.', imgSrc: 'uploads/banner-odontologia.jpg', imgBg: '#d8c8c8' },
+            { url: 'https://www.careplus.com.br/careplus-mais/ecossistema-integrado-de-saude-e-tendencia-no-cuidado-preventivo', title: 'Ecossistema integrado de saúde é tendência preventiva', desc: 'Como o ecossistema integrado melhora o cuidado.', imgSrc: 'uploads/banner-ecossistema-saude.jpg', imgBg: '#c0ccd8' }].
             map((a, i) =>
             <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" style={{ minWidth: 180, maxWidth: 180, flexShrink: 0, borderRadius: 14, overflow: 'hidden', border: `1px solid ${CP.border}`, backgroundColor: CP.white, boxShadow: '0 2px 8px rgba(0,0,0,0.07)', textDecoration: 'none', scrollSnapAlign: 'start', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ height: 90, backgroundColor: a.imgBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontSize: 28 }}>{i === 0 ? '💉' : i === 1 ? '🦷' : '🏥'}</span>
+                <div style={{ height: 90, backgroundColor: a.imgBg, overflow: 'hidden' }}>
+                  <img src={a.imgSrc} alt={a.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={(e) => { e.target.style.display = 'none'; }} />
                 </div>
                 <div style={{ padding: '10px 12px 14px' }}>
                   <div style={{ fontSize: 12, fontWeight: 700, color: CP.text, lineHeight: 1.4, marginBottom: 4 }}>{a.title}</div>
