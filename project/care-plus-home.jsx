@@ -452,7 +452,7 @@ function RedeScreen({ ctx }) {
               <div style={{ fontSize: 14, fontWeight: 700, color: CP.white, marginBottom: 4 }}>Rede+</div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', lineHeight: 1.45, fontWeight: "500" }}>Especialistas com doutorado e pós-graduação, selecionados pela Care Plus</div>
             </div>
-            <button style={{ backgroundColor: CP.white, color: CP.navy, border: 'none', borderRadius: 8, padding: '9px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+            <button onClick={() => ctx.navigate('redeplus-1')} style={{ backgroundColor: CP.white, color: CP.navy, border: 'none', borderRadius: 8, padding: '9px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
               Conhecer ›
             </button>
           </div>
@@ -662,7 +662,125 @@ function JourneyScreen({ ctx }) {
 
 }
 
+// ─── REDE+ ────────────────────────────────────────────────────────────────────
+const REDEPLUS_DOCTORS = [
+  { name: 'Dr. André Cavalcanti', esp: 'Cardiologia',  cred: 'Doutor pela USP · CRM 12345',     initials: 'AC', color: '#b8c8d8' },
+  { name: 'Dr. Marcos Vieira',    esp: 'Cardiologia',  cred: 'Doutor pela PUC-SP · CRM 56789',  initials: 'MV', color: '#c8b8b8' },
+  { name: 'Dra. Juliana Barros',  esp: 'Neurologia',   cred: 'Doutora pela USP · CRM 22314',    initials: 'JB', color: '#d8c8b8' },
+  { name: 'Dr. Felipe Souza',     esp: 'Oncologia',    cred: 'Doutor pela UNIFESP · CRM 34521', initials: 'FS', color: '#c8d8c8' },
+  { name: 'Dra. Renata Lima',     esp: 'Ortopedia',    cred: 'Doutora pela USP · CRM 11234',    initials: 'RL', color: '#d8d0c8' },
+];
+
+function RedePlusScreen({ ctx }) {
+  const [chip, setChip] = React.useState('Todos');
+  const [busca, setBusca] = React.useState('');
+  const chips = ['Todos', 'Neurologia', 'Oncologia', 'Ortopedia', 'Cardiologia'];
+  const filtered = REDEPLUS_DOCTORS.filter(d => {
+    const matchChip = chip === 'Todos' || d.esp === chip;
+    const matchBusca = !busca || d.name.toLowerCase().includes(busca.toLowerCase()) || d.esp.toLowerCase().includes(busca.toLowerCase());
+    return matchChip && matchBusca;
+  });
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: CP.white }}>
+      <div style={{ padding: '0 16px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: `1px solid ${CP.border}`, flexShrink: 0, height: 52 }}>
+        <button onClick={ctx.goBack} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: CP.text, display: 'flex' }}><IcBack /></button>
+        <span style={{ flex: 1, fontSize: 15, fontWeight: 700, color: CP.text }}>Rede+ · Especialistas Care Plus</span>
+        <button style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: CP.textMid, display: 'flex' }}><IcBell /></button>
+      </div>
+      <div style={{ padding: '12px 16px 0', flexShrink: 0 }}>
+        <div style={{ fontSize: 13, color: CP.textMid, marginBottom: 12, lineHeight: 1.4 }}>Profissionais de excelência, com formação diferenciada</div>
+        <div style={{ backgroundColor: '#f0f5fb', borderRadius: 24, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+          <span style={{ color: CP.textLight, flexShrink: 0 }}><IcSearch /></span>
+          <input value={busca} onChange={e => setBusca(e.target.value)} placeholder="Buscar por nome ou especialidade..."
+            style={{ border: 'none', background: 'none', outline: 'none', fontSize: 13, flex: 1, fontFamily: 'inherit', color: CP.text }} />
+        </div>
+        <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 12 }}>
+          {chips.map(c =>
+            <button key={c} onClick={() => setChip(c)}
+              style={{ padding: '6px 14px', borderRadius: 20, border: `1.5px solid ${chip === c ? CP.primary : CP.border}`, backgroundColor: CP.white, color: chip === c ? CP.primary : CP.textMid, fontSize: 12, fontWeight: chip === c ? 700 : 500, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+              {c}
+            </button>
+          )}
+        </div>
+      </div>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '0 16px 20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {filtered.map((d, i) =>
+          <div key={i} style={{ backgroundColor: CP.white, border: `1px solid ${CP.border}`, borderRadius: 12, padding: '14px', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: d.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ fontSize: 14, fontWeight: 700, color: '#5a6a7a' }}>{d.initials}</span>
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: CP.text, marginBottom: 2 }}>{d.name}</div>
+              <div style={{ fontSize: 12, color: CP.primary, fontWeight: 600, marginBottom: 2 }}>{d.esp}</div>
+              <div style={{ fontSize: 11, color: CP.textLight }}>{d.cred}</div>
+            </div>
+            <button onClick={() => { window.__rpDoc = d; ctx.navigate('redeplus-2'); }}
+              style={{ backgroundColor: CP.primary, color: CP.white, border: 'none', borderRadius: 8, padding: '9px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}>
+              Agendar
+            </button>
+          </div>
+        )}
+      </div>
+    </div>);
+}
+
+function RedePlusAgendarScreen({ ctx }) {
+  const [data, setData] = React.useState('');
+  const [hora, setHora] = React.useState('');
+  const slots = ['07:00', '08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00'];
+  const ready = data && hora;
+  return (
+    <FlowScreen title="Escolher data" onBack={ctx.goBack}
+      foot={<PrimaryBtn disabled={!ready} onClick={() => { window.__rpData = data; window.__rpHora = hora; ctx.navigate('redeplus-3'); }}>Confirmar horário</PrimaryBtn>}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: CP.textMid, marginBottom: 8 }}>Data</div>
+          <input type="date" value={data} onChange={e => setData(e.target.value)}
+            style={{ width: '100%', border: `1.5px solid ${CP.border}`, borderRadius: 10, padding: '13px 14px', fontSize: 15, fontFamily: 'inherit', color: data ? CP.text : CP.textLight, outline: 'none', backgroundColor: CP.white, boxSizing: 'border-box' }} />
+        </div>
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: CP.textMid, marginBottom: 10 }}>Horário disponível</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8 }}>
+            {slots.map(s =>
+              <button key={s} onClick={() => setHora(s)}
+                style={{ padding: '12px 0', borderRadius: 10, border: `1.5px solid ${hora === s ? CP.primary : CP.border}`, backgroundColor: CP.white, color: hora === s ? CP.primary : CP.text, fontSize: 14, fontWeight: hora === s ? 700 : 400, cursor: 'pointer' }}>
+                {s}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </FlowScreen>);
+}
+
+function RedePlusConfirmacaoScreen({ ctx }) {
+  const doc = window.__rpDoc || { name: 'Dr. André Cavalcanti', esp: 'Cardiologia' };
+  const fmtData = window.__rpData ? window.__rpData.split('-').reverse().join('/') : '—';
+  const hora = window.__rpHora || '—';
+  return (
+    <FlowScreen title="Confirmação" onBack={ctx.goBack}
+      foot={<PrimaryBtn onClick={() => ctx.navigateTab('home')}>Confirmar consulta</PrimaryBtn>}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 16 }}>
+        <div style={{ width: 56, height: 56, borderRadius: '50%', backgroundColor: '#e8f5ee', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <polyline points="5,14 11,21 23,8" stroke="#22c55e" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div style={{ fontSize: 20, fontWeight: 700, color: CP.text, marginBottom: 24 }}>Consulta agendada!</div>
+        <div style={{ width: '100%', backgroundColor: CP.warmGrey, borderRadius: 12, padding: 16 }}>
+          {[['Médico', doc.name], ['Especialidade', doc.esp], ['Data', fmtData], ['Horário', hora], ['Local', 'Clínica Preston – Al. Santos, 200']].map(([k, v]) =>
+            <div key={k} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '10px 0', borderBottom: `1px solid ${CP.border}` }}>
+              <span style={{ fontSize: 13, color: CP.textLight }}>{k}</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: CP.text, textAlign: 'right', maxWidth: '60%' }}>{v}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </FlowScreen>);
+}
+
 Object.assign(window, {
   HomeScreen, MenuScreen, CarteirinhaScreen, RedeScreen,
-  ReembolsoScreen, AutorizacoesScreen, JourneyScreen
+  ReembolsoScreen, AutorizacoesScreen, JourneyScreen,
+  RedePlusScreen, RedePlusAgendarScreen, RedePlusConfirmacaoScreen,
 });

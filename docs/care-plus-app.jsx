@@ -15,6 +15,10 @@ function CarePlusApp() {
     // Root tabs
     'home':           HomeScreen,
     'rede':           RedeScreen,
+    // Rede+
+    'redeplus-1':     RedePlusScreen,
+    'redeplus-2':     RedePlusAgendarScreen,
+    'redeplus-3':     RedePlusConfirmacaoScreen,
     'reembolso':      ReembolsoScreen,
     'autorizacoes':   AutorizacoesScreen,
     'journey':        JourneyScreen,
