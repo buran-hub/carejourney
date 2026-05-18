@@ -465,10 +465,10 @@ function RedeScreen({ ctx }) {
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 14, fontWeight: 700, color: '#0d5c3a', marginBottom: 4 }}>Oya Care</div>
-                <div style={{ fontSize: 11, color: '#2d7a56', lineHeight: 1.45, marginBottom: 6 }}>Uma experiência de saúde feminina — ginecologia, endocrinologia e muito mais</div>
+                <div style={{ fontSize: 11, color: '#2d7a56', lineHeight: 1.45, marginBottom: 6 }}>Uma experiência de saúde feminina</div>
                 <div style={{ fontSize: 10, color: '#2d7a56', fontWeight: 700 }}>Incluído no seu plano · Sem custo adicional</div>
               </div>
-              <button style={{ backgroundColor: '#0d9e75', color: CP.white, border: 'none', borderRadius: 8, padding: '9px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+              <button onClick={() => window.open('https://agendamento.oya.care/selecao-de-servicos?_ga=2.85153497.1579305191.1722886130-588610493.1694638574&_gl=1*m9pako*_ga*NTg4NjEwNDkzLjE2OTQ2Mzg1NzQ.*_ga_SQ0WD9SM6F*MTcyMjk1Mzc2Ni4xNTguMS4xNzIyOTU0MDE1LjAuMC4w*_gcl_au*MjA1MzkxNDUxMC4xNzIyOTUzNzk2*_ga_9QBN76F7RS*MTcyMjk1Mzc2Ni4xNjEuMS4xNzIyOTU0MDE1LjcuMC4w&gad_source=1&gad_campaignid=20495081704&gbraid=0AAAAABijegJaaOJvIogtEr2J31YlkePXL&gclid=CjwKCAjw8arQBhB9EiwAfIKdQiqa1nAk8hig_Fy50PFUZO7boRqDCgokFoHGisXmBQAZSK2ymoADzRoCO1kQAvD_BwE', '_blank')} style={{ backgroundColor: '#0d9e75', color: CP.white, border: 'none', borderRadius: 8, padding: '9px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
                 Conhecer ›
               </button>
             </div>

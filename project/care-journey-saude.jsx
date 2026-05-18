@@ -104,10 +104,11 @@ function OyaCareCard({ visible }) {
           <span style={{ fontSize: 18 }}>🌸</span>
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: CJ.navy, marginBottom: 3 }}>Check-up ginecológico gratuito</div>
-          <div style={{ fontSize: 10, color: CJ.textSecondary, lineHeight: 1.4 }}>A Care Plus tem parceria com a Oya Care. Sem custo para você.</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: CJ.navy, marginBottom: 3 }}>Oya Care</div>
+          <div style={{ fontSize: 10, color: CJ.textSecondary, lineHeight: 1.4, marginBottom: 3 }}>Uma experiência de saúde feminina</div>
+          <div style={{ fontSize: 10, color: CJ.textSecondary, fontWeight: 700 }}>Incluído no seu plano · Sem custo adicional</div>
         </div>
-        <button style={{ backgroundColor: CJ.white, color: CJ.teal, border: `1.5px solid ${CJ.teal}`, borderRadius: 8, padding: '7px 10px', fontSize: 10, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+        <button onClick={() => window.open('https://agendamento.oya.care/selecao-de-servicos?_ga=2.85153497.1579305191.1722886130-588610493.1694638574&_gl=1*m9pako*_ga*NTg4NjEwNDkzLjE2OTQ2Mzg1NzQ.*_ga_SQ0WD9SM6F*MTcyMjk1Mzc2Ni4xNTguMS4xNzIyOTU0MDE1LjAuMC4w*_gcl_au*MjA1MzkxNDUxMC4xNzIyOTUzNzk2*_ga_9QBN76F7RS*MTcyMjk1Mzc2Ni4xNjEuMS4xNzIyOTU0MDE1LjcuMC4w&gad_source=1&gad_campaignid=20495081704&gbraid=0AAAAABijegJaaOJvIogtEr2J31YlkePXL&gclid=CjwKCAjw8arQBhB9EiwAfIKdQiqa1nAk8hig_Fy50PFUZO7boRqDCgokFoHGisXmBQAZSK2ymoADzRoCO1kQAvD_BwE', '_blank')} style={{ backgroundColor: CJ.white, color: CJ.teal, border: `1.5px solid ${CJ.teal}`, borderRadius: 8, padding: '7px 10px', fontSize: 10, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
           Conhecer
         </button>
       </div>
