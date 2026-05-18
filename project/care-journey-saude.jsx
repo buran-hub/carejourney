@@ -55,7 +55,7 @@ function CareHealthScoreCard() {
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 12, fontWeight: 700, color: CJ.textPrimary, marginBottom: 3 }}>Care Health Score</div>
           <div style={{ fontSize: 10, color: CJ.textTertiary, marginBottom: 8 }}>vs. pessoas 30–39 anos</div>
-          <ProgressBar pct={78} color={CJ.teal} style={{ marginBottom: 5 }} />
+          <ProgressBar pct={78} color="rgb(0, 121, 200)" style={{ marginBottom: 5 }} />
           <div style={{ ...{ fontSize: 9, color: CJ.textTertiary }, color: "rgb(0, 121, 200)" }}>Melhor que 64% da sua faixa etária</div>
         </div>
         <div style={{ textAlign: 'center', flexShrink: 0 }}>
