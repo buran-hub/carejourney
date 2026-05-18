@@ -26,21 +26,21 @@ function Toggle({ on, onChange }) {
 // ─── TELA 1 — Boas-vindas ─────────────────────────────────────────────────────
 function OnboardingWelcome({ ctx }) {
   return (
-    <div style={{ height: '100%', backgroundColor: CJ.navy, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 28px' }}>
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 28, fontWeight: 900, color: CJ.white, letterSpacing: -1 }}>blua.</div>
-        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginTop: 2 }}>Care Journey</div>
+    <div style={{ height: '100%', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 28px' }}>
+      <div style={{ marginBottom: 28 }}>
+        <div style={{ fontSize: 28, fontWeight: 900, color: CJ.navy, letterSpacing: -1, textAlign: 'center' }}>blua.</div>
+        <div style={{ fontSize: 11, color: '#9E9E9E', textAlign: 'center', marginTop: 2 }}>Care Journey</div>
       </div>
-      <div style={{ width: 140, height: 140, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.06)', border: '2px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 32 }}>
+      <div style={{ width: 140, height: 140, borderRadius: '50%', backgroundColor: '#EEF2F8', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 32 }}>
         <span style={{ fontSize: 56 }}>🏆</span>
       </div>
-      <div style={{ fontSize: 24, fontWeight: 700, color: CJ.white, textAlign: 'center', marginBottom: 12, lineHeight: 1.3 }}>Bem-vindo ao Care Journey</div>
-      <div style={{ fontSize: 14, color: '#B5D4F4', textAlign: 'center', lineHeight: 1.6, marginBottom: 36 }}>Complete seu perfil e comece a ganhar Coins agora</div>
-      <OnboardingProgress current={0} total={4} dark />
+      <div style={{ fontSize: 24, fontWeight: 700, color: CJ.navy, textAlign: 'center', marginBottom: 12, lineHeight: 1.3 }}>Bem-vindo ao Care Journey</div>
+      <div style={{ fontSize: 14, color: '#9E9E9E', textAlign: 'center', lineHeight: 1.6, marginBottom: 36 }}>Complete seu perfil e comece a ganhar Coins agora</div>
+      <OnboardingProgress current={0} total={4} />
       <div style={{ width: '100%' }}>
         <OBPrimaryBtn onClick={() => ctx.navigate('onboarding-2')}>Começar</OBPrimaryBtn>
       </div>
-      <div style={{ marginTop: 16, fontSize: 11, color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>
+      <div style={{ marginTop: 16, fontSize: 11, color: '#BDBDBD', textAlign: 'center' }}>
         Ganhe até 🪙 330 Coins completando o perfil
       </div>
     </div>
@@ -269,28 +269,28 @@ function OnboardingCelebracao({ ctx }) {
   const coins = ctx.coins || 330;
 
   return (
-    <div style={{ height: '100%', backgroundColor: CJ.navy, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 28px', overflow: 'hidden', position: 'relative' }}>
+    <div style={{ height: '100%', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 28px', overflow: 'hidden', position: 'relative' }}>
       {[...Array(18)].map((_, i) => (
         <div key={i} style={{
           position: 'absolute', width: 8, height: 8, borderRadius: '50%',
           left: `${(i * 37 + 10) % 90}%`, top: `${(i * 23 + 5) % 80}%`,
           backgroundColor: ['#FFD54F','#81C784','#64B5F6','#F06292','#FFB74D'][i%5],
-          opacity: animIn ? 0.8 : 0,
+          opacity: animIn ? 0.6 : 0,
           transform: animIn ? 'translateY(0) scale(1)' : 'translateY(-20px) scale(0)',
           transition: `all 0.6s ${i*0.05}s`,
         }} />
       ))}
-      <div style={{ width: 88, height: 88, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, transform: animIn ? 'scale(1)' : 'scale(0)', transition: 'transform 0.5s 0.2s' }}>
-        <span style={{ fontSize: 44 }}>🦶</span>
+      <div style={{ width: 96, height: 96, borderRadius: '50%', backgroundColor: '#EEF2F8', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, transform: animIn ? 'scale(1)' : 'scale(0)', transition: 'transform 0.5s 0.2s' }}>
+        <span style={{ fontSize: 48 }}>🦶</span>
       </div>
-      <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', marginBottom: 6, textAlign: 'center' }}>Badge desbloqueado</div>
-      <div style={{ fontSize: 14, fontWeight: 700, color: CJ.white, marginBottom: 20 }}>🦶 Primeiro Passo</div>
-      <div style={{ fontSize: 28, fontWeight: 700, color: CJ.white, textAlign: 'center', marginBottom: 8 }}>🎉 Perfil completo!</div>
-      <div style={{ fontSize: 20, fontWeight: 700, color: '#FFD54F', marginBottom: 20 }}>🪙 {coins} Coins ganhos</div>
-      <div style={{ backgroundColor: 'rgba(83,74,183,0.3)', borderRadius: 12, padding: 14, marginBottom: 28, border: '1px solid rgba(83,74,183,0.5)' }}>
-        <div style={{ fontSize: 9, color: CJ.purple, fontWeight: 700, marginBottom: 6 }}>✦ IA — Caren</div>
-        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', lineHeight: 1.6 }}>
-          Incrível, Renato! Você completou seu perfil e já está no nível 💙 Vital. Sua jornada de saúde começa agora!
+      <div style={{ fontSize: 12, color: '#9E9E9E', marginBottom: 4, textAlign: 'center' }}>Badge desbloqueado</div>
+      <div style={{ fontSize: 14, fontWeight: 700, color: CJ.navy, marginBottom: 20 }}>🦶 Primeiro Passo</div>
+      <div style={{ fontSize: 28, fontWeight: 700, color: CJ.navy, textAlign: 'center', marginBottom: 8 }}>🎉 Perfil completo!</div>
+      <div style={{ fontSize: 20, fontWeight: 700, color: '#E67E22', marginBottom: 20 }}>🪙 {coins} Coins ganhos</div>
+      <div style={{ backgroundColor: '#F5F7FC', borderRadius: 12, padding: 14, marginBottom: 28, border: '1px solid #E8EEF8', width: '100%' }}>
+        <div style={{ fontSize: 9, color: '#0079c8', fontWeight: 700, marginBottom: 6 }}>✦ Caren</div>
+        <div style={{ fontSize: 12, color: '#555', lineHeight: 1.6 }}>
+          Incrível, Renato! Você completou seu perfil. Sua jornada de saúde começa agora!
         </div>
       </div>
       <OBPrimaryBtn onClick={() => { localStorage.setItem('cj_onboarding_done', '1'); ctx.navigate('home'); }}>
