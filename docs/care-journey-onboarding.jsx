@@ -290,7 +290,7 @@ function OnboardingCelebracao({ ctx }) {
       <div style={{ backgroundColor: '#F5F7FC', borderRadius: 12, padding: 14, marginBottom: 28, border: '1px solid #E8EEF8', width: '100%' }}>
         <div style={{ fontSize: 9, color: '#0079c8', fontWeight: 700, marginBottom: 6 }}>✦ Caren</div>
         <div style={{ fontSize: 12, color: '#555', lineHeight: 1.6 }}>
-          Incrível, Renato! Você completou seu perfil. Sua jornada de saúde começa agora!
+          Incrível, {getUserFirstName()}! Você completou seu perfil. Sua jornada de saúde começa agora!
         </div>
       </div>
       <OBPrimaryBtn onClick={() => { localStorage.setItem('cj_onboarding_done', '1'); ctx.navigate('home'); }}>

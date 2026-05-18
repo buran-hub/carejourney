@@ -170,7 +170,7 @@ function AppHeader({ onMenu, onNotification, userName }) {
         <div style={{ width: 40, height: 40, borderRadius: '50%', backgroundColor: CP.primary, display: 'flex', alignItems: 'center', justifyContent: 'center', color: CP.white, fontWeight: 700, fontSize: 16, flexShrink: 0 }}>
           {(userName || 'R')[0]}
         </div>
-        <span style={{ fontSize: 15, fontWeight: 600, color: CP.text }}>Olá, {userName || 'Renato'}!</span>
+        <span style={{ fontSize: 15, fontWeight: 600, color: CP.text }}>Olá, {userName || getUserFirstName()}!</span>
       </div>
       <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
         <button onClick={onNotification} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: CP.textMid, display: 'flex' }}><IcBell /></button>
@@ -315,6 +315,14 @@ function JourneyCard({ icon, title, desc, onClick, accent }) {
   );
 }
 
+// ─── Nome dinâmico baseado em gênero ────────────────────────────────────────
+function getUserFirstName() {
+  return localStorage.getItem('cj_gender') === 'Feminino' ? 'Maria' : 'Renato';
+}
+function getUserFullName() {
+  return localStorage.getItem('cj_gender') === 'Feminino' ? 'Maria Fagundes Santos' : 'Renato Fagundes Santos';
+}
+
 // Export all to window
 Object.assign(window, {
   CP,
@@ -323,4 +331,5 @@ Object.assign(window, {
   AppHeader, BackHeader, BottomNav,
   PrimaryBtn, SecondaryBtn, ListRow, FlowScreen,
   SectionHeader, InputField, IlloPlaceholder, SelectField, JourneyCard,
+  getUserFirstName, getUserFullName,
 });

@@ -181,7 +181,7 @@ function CarenScreen2({ ctx }) {
   // ⚠ UX PROBLEM: Beneficiário não fica salvo — usuário precisa informar a cada sessão
   // ⚠ UX PROBLEM: Sem feedback visual de seleção — item selecionado não tem destaque
   const [selected, setSelected] = React.useState(null); // no highlight deliberately
-  const beneficiarios = ['Renato Fagundes Santos', 'Ana Santos (cônjuge)', 'Pedro Santos (filho, 8 anos)'];
+  const beneficiarios = [getUserFullName(), 'Ana Santos (cônjuge)', 'Pedro Santos (filho, 8 anos)'];
   return (
     <FlowScreen title="Para quem é o atendimento?" onBack={ctx.goBack}
       foot={<PrimaryBtn onClick={() => ctx.navigate('caren-3')} disabled={!selected}>Continuar</PrimaryBtn>}>
