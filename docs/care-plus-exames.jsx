@@ -50,7 +50,7 @@ function SharedDataScreen({ ctx, nextScreen, title }) {
 }
 
 function SharedBeneficiarioScreen({ ctx, nextScreen, title }) {
-  const [name, setName] = React.useState('Renato Fagundes Santos');
+  const [name, setName] = React.useState(getUserFullName());
   const [cpf, setCpf] = React.useState('');
   const [birth, setBirth] = React.useState('');
   return (
@@ -80,7 +80,7 @@ function SharedConfirmacaoScreen({ ctx, type }) {
       </div>
       <div style={{ backgroundColor: CP.warmGrey, borderRadius: 12, padding: 16 }}>
         {[
-          ['Beneficiário', 'Renato Fagundes Santos'],
+          ['Beneficiário', getUserFullName()],
           ['Data', '15/05/2026'],
           ['Horário', '09:00'],
           ['Endereço', 'Av. Paulista, 1000 – Bela Vista, SP'],
@@ -175,7 +175,7 @@ function ExamesScreen7({ ctx }) {
     <FlowScreen title="Revisão do pedido" onBack={ctx.goBack}
       foot={<PrimaryBtn onClick={() => ctx.navigate('exames-8')}>Confirmar agendamento</PrimaryBtn>}>
       <div style={{ fontSize: 14, color: CP.textMid, marginBottom: 16 }}>Confira os dados antes de confirmar:</div>
-      {[['Beneficiário', 'Renato Fagundes Santos'], ['Tipo', 'Exames clínicos'], ['Exames', 'Hemograma completo, Glicemia, Colesterol'], ['Endereço', 'Av. Paulista, 1000 – Bela Vista, SP'], ['Data', '15/05/2026'], ['Horário', '09:00'], ['Copay', 'Sem coparticipação ✓']].map(([k, v]) => (
+      {[['Beneficiário', getUserFullName()], ['Tipo', 'Exames clínicos'], ['Exames', 'Hemograma completo, Glicemia, Colesterol'], ['Endereço', 'Av. Paulista, 1000 – Bela Vista, SP'], ['Data', '15/05/2026'], ['Horário', '09:00'], ['Copay', 'Sem coparticipação ✓']].map(([k, v]) => (
         <div key={k} style={{ padding: '11px 0', borderBottom: `1px solid ${CP.border}`, display: 'flex', flexDirection: 'column', gap: 3 }}>
           <span style={{ fontSize: 12, color: CP.textLight }}>{k}</span>
           <span style={{ fontSize: 14, fontWeight: 600, color: CP.text }}>{v}</span>
@@ -272,7 +272,7 @@ function VacinasScreen5({ ctx }) {
 
 function VacinasScreen6({ ctx }) {
   // ⚠ UX PROBLEM: Botão de confirmação escondido pelo scroll — usuário precisa rolar para ver
-  const [name, setName] = React.useState('Renato Fagundes Santos');
+  const [name, setName] = React.useState(getUserFullName());
   const [cpf, setCpf] = React.useState('');
   const [birth, setBirth] = React.useState('');
   const [alergias, setAlergias] = React.useState('');

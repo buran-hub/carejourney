@@ -19,7 +19,7 @@ function HomeTBEScreen({ ctx }) {
               <ellipse cx="26" cy="46" rx="16" ry="12" fill="#a0b4c8" />
             </svg>
           </div>
-          <div style={{ fontSize: 17, color: CP.text, fontWeight: 400 }}>Olá, Renato!</div>
+          <div style={{ fontSize: 17, color: CP.text, fontWeight: 400 }}>Olá, {getUserFirstName()}!</div>
         </div>
         <div style={{ display: 'flex', gap: 16, alignItems: 'center', paddingTop: 8 }}>
           <button style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2, color: CP.textMid, position: 'relative', display: 'flex' }}>

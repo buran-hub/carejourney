@@ -45,7 +45,7 @@ function HomeScreen({ ctx }) {
               <ellipse cx="26" cy="46" rx="16" ry="12" fill="#a0b4c8" />
             </svg>
           </div>
-          <div style={{ fontSize: 17, color: CP.text, fontWeight: "400" }}>Olá, Renato!</div>
+          <div style={{ fontSize: 17, color: CP.text, fontWeight: "400" }}>Olá, {getUserFirstName()}!</div>
         </div>
         {/* Right: bell + menu */}
         <div style={{ display: 'flex', gap: 16, alignItems: 'center', paddingTop: 8 }}>
@@ -349,7 +349,7 @@ function CarteirinhaScreen({ ctx }) {
           </div>
           <div style={{ marginBottom: 16 }}>
             <div style={{ fontSize: 11, opacity: 0.7, marginBottom: 3 }}>Beneficiário</div>
-            <div style={{ fontSize: 16, fontWeight: 700 }}>Renato Fagundes Santos</div>
+            <div style={{ fontSize: 16, fontWeight: 700 }}>{getUserFullName()}</div>
           </div>
           <div style={{ display: 'flex', gap: 24 }}>
             <div>
@@ -582,7 +582,7 @@ function ReembolsoScreen({ ctx }) {
 
 // ─── AUTORIZAÇÕES ────────────────────────────────────────────────────────────
 function AutorizacoesScreen({ ctx }) {
-  const [benef, setBenef] = React.useState('Renato Fagundes Santos');
+  const [benef, setBenef] = React.useState(getUserFullName());
   const records = [
   { date: '04/10/2024', clinic: 'Nova Clínica', type: 'Fisioterapia em miopatias', status: 'Liberado' },
   { date: '12/09/2024', clinic: 'Inovação Diagnósticos', type: 'Vacina Influenza', status: 'Liberado' },
