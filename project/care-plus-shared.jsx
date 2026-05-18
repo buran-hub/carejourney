@@ -245,9 +245,9 @@ function ListRow({ icon, label, sublabel, onClick, right, noBorder }) {
 // Generic inner screen: back header + scrollable body + optional sticky bottom
 function FlowScreen({ title, onBack, children, foot, headerBg, headerTitleColor, noPad }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: CP.white }}>
       <BackHeader title={title} onBack={onBack} bg={headerBg} titleColor={headerTitleColor} />
-      <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', padding: noPad ? 0 : 16 }}>
+      <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', padding: noPad ? 0 : 16, backgroundColor: CP.white }}>
         {children}
       </div>
       {foot && (
