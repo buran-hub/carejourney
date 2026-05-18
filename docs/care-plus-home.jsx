@@ -444,15 +444,15 @@ function RedeScreen({ ctx }) {
         <div style={{ padding: '14px 16px 0' }}>
 
           {/* Rede+ */}
-          <div style={{ ...{ backgroundColor: CP.navy, borderRadius: 14, padding: '16px', display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }, backgroundColor: "rgb(51, 83, 138)" }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div style={{ backgroundColor: CP.white, borderRadius: 16, padding: '16px', display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10, border: '1.5px solid #d0dcf0', boxShadow: '0 2px 8px rgba(0,60,160,0.07)' }}>
+            <div style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: '#e8eef8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <span style={{ fontSize: 22 }}>⭐</span>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: CP.white, marginBottom: 4 }}>Rede+</div>
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', lineHeight: 1.45, fontWeight: "500" }}>Especialistas com doutorado e pós-graduação, selecionados pela Care Plus</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: CP.text, marginBottom: 4 }}>Rede+</div>
+              <div style={{ fontSize: 11, color: CP.textMid, lineHeight: 1.45 }}>Especialistas com doutorado e pós-graduação, selecionados pela Care Plus</div>
             </div>
-            <button onClick={() => ctx.navigate('redeplus-1')} style={{ backgroundColor: CP.white, color: CP.navy, border: 'none', borderRadius: 8, padding: '9px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+            <button onClick={() => ctx.navigate('redeplus-1')} style={{ backgroundColor: CP.primary, color: CP.white, border: 'none', borderRadius: 10, padding: '10px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
               Conhecer ›
             </button>
           </div>
