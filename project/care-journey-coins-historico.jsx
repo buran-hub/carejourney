@@ -42,7 +42,6 @@ function CatalogoCard() {
   const items = [
   { emoji: '🩺', label: '1 exame sem Copay', coins: 5000, estado: 'Em breve', cat: 'Care Plus' },
   { emoji: '📋', label: '1 check-up sem Copay', coins: 8000, estado: 'Em breve', cat: 'Care Plus' },
-  { emoji: '👨‍👩‍👧', label: 'Adicionar dependente ao plano', coins: 10000, estado: 'Bloqueado', cat: 'Care Plus' },
   { emoji: '🌟', label: 'Acesso facilitado Rede+', coins: 4000, estado: 'Em breve', cat: 'Care Plus' },
   { emoji: '🧘', label: 'Headspace 1 mês', coins: 5000, estado: 'Em breve', cat: 'Parceiros' },
   { emoji: '🧘', label: 'Headspace 3 meses', coins: 8000, estado: 'Bloqueado', cat: 'Parceiros' },
